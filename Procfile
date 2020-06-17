@@ -1,1 +1,1 @@
-web: gunicorn parkzy1.wsgi
+web: gunicorn --pythonpath parkzy1 parkzy1.wsgi
