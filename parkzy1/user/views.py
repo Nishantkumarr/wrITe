@@ -24,15 +24,15 @@ def register(request):
 
 
 @login_required
-def profile(request,username):
-    
-    return render(request, 'user/profile.html')
-
-
+def profile(request, username):
+    user = User.objects.get(username=username)
+    return render(request, 'user/profile.html', {'user':user})
 
 
 @login_required
-def update_profile(request):
+def update_profile(request,username):
+     user = User.objects.get(username=username)
+
      if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST,
@@ -42,7 +42,7 @@ def update_profile(request):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            return redirect('profile', username)
 
      else:
         u_form = UserUpdateForm(instance=request.user)
@@ -53,7 +53,7 @@ def update_profile(request):
         'p_form': p_form
      }
 
-     return render(request, 'user/update_profile.html', context)
+     return render(request, 'user/update_profile.html',context)
        
 
 

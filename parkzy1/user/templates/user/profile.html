@@ -14,11 +14,43 @@
   <section class="clean-block clean-form dark">
       <div class="container">
           <div class="block-heading">
+            <h1 class="text-info">{{user.profile.name}}</h1>
+            <p>Profile</p>
 
           </div>
             <style>
                 body{
                     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+                }
+                * {
+                box-sizing: border-box;
+                }
+
+                /* Create three equal columns that floats next to each other */
+                .column {
+                float: left;
+                width:33.33%;
+                padding: 10px;
+                height: 300px; /* Should be removed. Only for demonstration */
+                }
+
+
+                /* Clear floats after the columns */
+                .row:after {
+                content: "";
+                display: table;
+                clear: both;
+                }
+
+                /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+                @media screen and (max-width: 600px) {
+                .column {
+                    width: 100%;
+                }
+                }
+                .col{
+                    padding-left: 10px;
+                    padding-bottom: 8px;
                 }
                 .emp-profile{
                     padding: 3%;
@@ -117,88 +149,84 @@
 
 
             <div class="container emp-profile">
-                    <div class="row" >
-                        <div class="col-md-4">
-                            <div class="profile-img" style="text-align: right;padding-right: 40px;">
-                                <img src={{user.profile.image.url}} style="width: auto; height: auto; " alt=""/>
-                            </div>
+                <div class="row">
+                    <div class="column" style="height: 200px;">
+                      <div class="profile-img" style="text-align: right;padding-right: 40px;">
+                         <img src={{user.profile.image.url}} style="width: auto; height: auto; " alt=""/>
+                      </div>
+                      <div class="profile-work" style="text-align: right;padding-right: 40px;">
+                          <hr>
+                          <h4 style="font-size: 18px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; padding-left: 20px;">{{user.profile.name}}</h4>
+                          <h6 style="font-size: 12px; padding-left: 20px; font-weight: 200;font-style: italic;">{{user.profile.bio}}</h6>
+                          <a href="{{user.profile.user_website}}"><h6><i class="fas fa-link"></i> Link</h6></a>
+
+                      </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="column" style="height:200px">
+                        <div class="profile-head">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                              <li class="nav-item">
+                               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                               </li>
+                            </ul>
                         </div>
-                        <div class="col-md-6">
-                            <div class="profile-head">
-                                        <h5>
-                                            {{user.username}}
-                                        </h5>
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                    </li>
-                                </ul>
+                        <div class="profile-work" >
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="row">
+                                    <div class="col">
+                                       <label>UserId  :- </label>
+                                    </div>
+                                    <div class="col">
+                                        <h6>{{user.username}}</h6>
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col">
+                                        <lable>Name    :- </lable>
+                                    </div>
+                                    <div class="col">
+                                        <h6>{{user.profile.name}}</h6>
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col">
+                                      <label>Email   :- </label>
+                                    </div>
+                                    <div class="col">
+                                        <h6 >{{user.email}}</h6>
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="col">
+                                        <label>Location  :-</label>
+                                    </div>
+                                    <div class="col">
+                                        <h6>{{user.profile.location}}</h6>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-2">
-                            <a href={% url 'update_profile' %} class="profile-edit-btn" style="background-color: #DCDCDC;border-radius: 10px;padding:5px;">Edit Profile</a>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="profile-work" style="text-align: right;padding-right: 40px;">
-                                <hr>
-                              <h4 style="font-size: 18px;font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; padding-left: 20px;">{{user.profile.name}}</h4>
-                              <h6 style="font-size: 12px; padding-left: 20px; font-weight: 200;font-style: italic;">{{user.profile.bio}}</h6>
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="tab-content profile-tab" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>User Id</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{user.username}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Name</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{user.profile.name}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Email</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{user.email}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Location</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>user.profile.location</p>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Website</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>{{user.profile.user_website}}</p>
-                                                </div>
-                                            </div>
-                                </div>
-                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                    
-                                </div>      
-                            </div>
-                        </div>
-                    </div>   
+                    <div class="column" style="height: 100px;text-align: center;">
+                     {% if request.user.username == user.username %}
+                          <a href={% url 'update_profile' user.username %} class="profile-edit-btn" style="background-color: #DCDCDC;border-radius: 10px;padding:5px;">Edit Profile</a>
+                     {%endif%}
+                    </div>
+                  </div>
+                  
+
+
             </div>
-      </div>
+                    
+        </div>
   </section>
 </main>
   

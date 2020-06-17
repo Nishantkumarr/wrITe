@@ -14,7 +14,7 @@
                   <hr>
                   <p>{{post.content}}</p>
                   <div class="post-info">
-                     <a > <span>By {{post.author}}</span></a>
+                     <a href={% url "profile" post.author.username %}> <span>By {{post.author}}</span></a>
                      <br>
                      <span>{{post.date_posted}}</span>
                  </div>
@@ -23,7 +23,7 @@
                          <a class="btn btn-outline-secondary" href ={% url 'blog-delete' post.id %} > Delete</a>
                          <a class="btn btn-outline-secondary" href = {% url 'blog-update' post.id %}> Update</a>
                     {% else %}
-                        <a  class=" btn btn-outline-secondary"  href="{{ post.book_url }}">Code</a>
+                        <a  class=" btn btn-outline-secondary"  href="{{ post.code_link }}">Code</a>
                     {% endif %}
                 </div>
                 <h5>Comments</h5>

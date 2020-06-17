@@ -130,10 +130,10 @@ LOGIN_REDIRECT_URL='blog-home'
 LOGIN_URL='login'
 
 
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'pythonblog@gmail.com'
-EMAIL_HOST_PASSWORD = 'Notnish@20'
-EMAIL_USE_TLS = False
-EMAIL_PORT = '587'
-EMAIL_USE_SSL = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('hostemail')
+EMAIL_HOST_PASSWORD = os.environ.get('hostpass')
+

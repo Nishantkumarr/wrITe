@@ -25,18 +25,18 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-        <div class="container"><a class="navbar-brand logo" href="#"><i class="fa fa-home"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand logo" href={% url 'blog-home' %}><i class="fa fa-home"></i></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'blog-name'  %} >Blog</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'blog-about' %} >About Us</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'contact' %} >Contact Us</a></li>
+                   <!-- <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'contact' %} >Contact Us</a></li> -->
 
                     {% if user.is_authenticated %}
                     <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'blog-new' %} >Post</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'logout' %} >Logout</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'profile' %} >Profile</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'profile' request.user.username %} >Profile</a></li>
                     {% else %}
                     <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'login' %} >Login</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href={% url 'register' %} >Register</a></li>
@@ -60,7 +60,6 @@
                             <li class="list-inline-item"><a href="https://github.com/Nishantkumarr"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x"></i><i class="fa fa-github fa-stack-1x fa-inverse"></i></span></a></li>
                             <hr>
                             <li class="list-inline-item"><a href={% url 'blog-about' %}>About Us</a></li>
-                            <li class="list-inline-item"><a href={% url 'contact' %}>Contact Us</a></li>
                             <li class="list-inline-item"><a href="#">Terms</a></li>
                             <li class="list-inline-item"><a href="#">Links</a></li>
                         </ul>
