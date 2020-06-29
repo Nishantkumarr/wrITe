@@ -1,4 +1,5 @@
 # WrITe
+
 ##Django-Blog
 
 A blog site made from Django, Html , Css , Bootstrap, Js. With the thought to provide people a platform to share their stories and experiences with code and coding. 
@@ -14,4 +15,4 @@ For any query reach out to  Nishant Kumar
 
 **Github** :-   [(https://github.com/Nishantkumarr)]
 
-or **Email** :- [(mailittonisnatkumar@gmail.com)]
+**Email** :- [(mailittonisnatkumar@gmail.com)]
